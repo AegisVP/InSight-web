@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
 import { googleLogin } from 'redux/user/userSlice';
 
-export const GoogleAuth = () => {
+const GoogleAuth = () => {
   const dispatch = useDispatch();
 
   // const urlObj = ;
@@ -26,3 +26,5 @@ export const GoogleAuth = () => {
 
   return <Navigate to="/" replace />;
 };
+
+export default GoogleAuth;

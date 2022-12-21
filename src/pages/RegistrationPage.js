@@ -1,4 +1,4 @@
-import { Wrapper, Container } from '../LoginPage/LoginPage.styled';
+import { Wrapper, Container } from './Styles/LoginPage.styled';
 // import RegistarationForm from '../RegistrationForm';
 
 const LoginPage = () => {

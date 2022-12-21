@@ -1,35 +1,37 @@
-import { GoogleAuth } from 'components/GoogleAuth/GoogleAuth';
-// import Loader from 'components/Loader/Loader';
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 
-// const HomePage = lazy(() => import('pages/HomePage'));
-const RegistrationPage = lazy(() => import('pages/RegistrationPage/RegistrationPage'));
-const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
-const Loader = lazy(() => import('components/Loader/Loader'));
-// const GoogleAuth = lazy(() => import('components/GoogleAuth/GoogleAuth'));
+// import { GoogleAuth } from 'pages/GoogleAuth';
+import Loader from 'components/Loader/Loader';
+import { constants } from 'constants';
+
+const MainPageSelector = lazy(() => import('pages/MainPageSelector'));
+const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const LogoutPage = lazy(() => import('pages/Logout'));
+const GoogleAuth = lazy(() => import('pages/GoogleAuth'));
+const Calculator = lazy(() => import('pages/Calculator'));
+const Diary = lazy(() => import('pages/Diary'));
 const CommonLayout = lazy(() => import('pages/CommonLayout'));
-// const Phonebook = lazy(() => import('pages/Phonebook'));
-// const Logout = lazy(() => import('pages/Logout'));
 
 export const App = () => {
   return (
-    <Routes>
-      <Route
-        path="/InSight-web/"
-        element={
-          <Suspense fallback={<Loader />}>
-            <CommonLayout />
-            <LoginPage />
-            {/* <RegistrationPage /> */}
-          </Suspense>
-        }
-      >
-        <Route path="google-auth" element={<GoogleAuth />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/InSight-web/" replace />} />
-      <Route path="/register" element={<RegistrationPage />} />
-      <Route path="/login" element={<LoginPage />} />
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path={constants.basePath} element={<CommonLayout />}>
+          <Route path="" element={<MainPageSelector />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="logout" element={<LogoutPage />} />
+          <Route path="register" element={<RegistrationPage />} />
+
+          <Route path="google-auth" element={<GoogleAuth />} />
+
+          <Route path="calculator" element={<Calculator />} />
+          <Route path="diary" element={<Diary />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to={constants.basePath} replace />} />
+      </Routes>
+    </Suspense>
   );
 };

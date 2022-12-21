@@ -5,7 +5,7 @@ export const SharedLayout = () => {
   return (
     <>
       <HeaderBar>HEADER BAR</HeaderBar>
-
+      
       <Outlet />
     </>
   );
