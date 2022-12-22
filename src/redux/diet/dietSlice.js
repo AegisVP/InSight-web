@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { handlePending, handleFulfilled, handleRejected } from 'redux/utils/defaultHandlers';
-import { getDiet } from './dietOperations';
-import { handleGettingDiet } from './dietHandlers';
+import { getDiet, getUserInfo } from './dietOperations';
+import { handleGettingDiet, handleGettingUserInfo } from './dietHandlers';
 
 const initialState = {
   params: {
     height: 0,
     age: 0,
-    current_weight: 0,
-    desired_weight: 0,
-    blood_type: 0,
+    currentWeight: 0,
+    desireWeight: 0,
+    bloodType: 0,
     proposedDiet: {
-      daily_calories: 0,
-      stop_products: [],
+      dailyIntake: 0,
+      stopProd: [],
     },
   },
   isLoading: false,
@@ -22,6 +22,12 @@ const initialState = {
 const dietSlice = createSlice({
   name: 'diet',
   initialState,
+  reducers: builder => {
+    builder
+      .addCase(getUserInfo.pending, handlePending)
+      .addCase(getUserInfo.fulfilled, handleGettingUserInfo)
+      .addCase(getUserInfo.rejected, handleRejected);
+  },
   extraReducers: builder => {
     builder
       .addCase(getDiet.pending, handlePending)

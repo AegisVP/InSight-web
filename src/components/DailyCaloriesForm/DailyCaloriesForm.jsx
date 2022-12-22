@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDiet } from 'redux/diet/dietSelectors';
-import { getDiet } from 'redux/diet/dietOperations';
+import { selectDiet, selectUserInfo } from 'redux/diet/dietSelectors';
+import { getDiet, getUserInfo } from 'redux/diet/dietOperations';
 // import { } from './DailyCaloriesForm.styled';
 
 export const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
-  const [desiredWeight, setDesiredWeight] = useState('');
+  const [desireWeight, setDesireWeight] = useState('');
   const [bloodType, setBloodType] = useState(1);
+  const [dailyIntake, setDailyIntake] = useState('');
+  const [stopProd, setStopProd] = useState([]);
 
   const dispatch = useDispatch();
   const dietInfo = useSelector(selectDiet);
   console.log(dietInfo);
+  const userInfo = useSelector(selectUserInfo);
+  console.log(userInfo);
 
   const handleChange = e => {
     switch (e.currentTarget.name) {
@@ -26,8 +30,8 @@ export const DailyCaloriesForm = () => {
       case 'currentWeight':
         setCurrentWeight(e.currentTarget.value);
         break;
-      case 'desiredWeight':
-        setDesiredWeight(e.currentTarget.value);
+      case 'desireWeight':
+        setDesireWeight(e.currentTarget.value);
         break;
       default:
         return;
@@ -42,13 +46,14 @@ export const DailyCaloriesForm = () => {
     setHeight('');
     setAge('');
     setCurrentWeight('');
-    setDesiredWeight('');
+    setDesireWeight('');
     setBloodType(1);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(getDiet({ height, age, currentWeight, desiredWeight, bloodType }));
+    dispatch(getUserInfo({ height, age, currentWeight, desireWeight, bloodType }));
+    dispatch(getDiet({ dailyIntake, stopProd }));
     resetForm();
   };
 
@@ -69,7 +74,7 @@ export const DailyCaloriesForm = () => {
       </label>
       <label>
         Desired weight *
-        <input type="number" name="desiredWeight" value={desiredWeight} onChange={handleChange} />
+        <input type="number" name="desireWeight" value={desireWeight} onChange={handleChange} />
       </label>
       <p>Blood type *</p>
       <label>
