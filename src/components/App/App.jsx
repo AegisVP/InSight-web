@@ -1,9 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 
-// import { GoogleAuth } from 'pages/GoogleAuth';
-import Loader from 'components/Loader/Loader';
 import { constants } from 'constants';
+import Loader from 'components/Loader/Loader';
 
 const MainPageSelector = lazy(() => import('pages/MainPageSelector'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -35,3 +34,8 @@ export const App = () => {
     </Suspense>
   );
 };
+
+// <Home />
+// <LogoMain />
+// <LoginPage />
+// <RegistrationPage />
