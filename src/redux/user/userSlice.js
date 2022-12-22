@@ -18,18 +18,24 @@ export const initialParamsState = {
   bloodType: 0,
 };
 
-export const initialUserState = {
+const initialState = {
   name: null,
   email: null,
   token: null,
-  params: initialParamsState,
+  params: {
+    height: 0,
+    age: 0,
+    currentWeight: 0,
+    desiredWeight: 0,
+    bloodType: 0,
+  },
   isLoading: false,
   error: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: initialUserState,
+  initialState,
   reducers: {
     googleLogin: handleGoogleLogin,
     setParams: handleSetParams,

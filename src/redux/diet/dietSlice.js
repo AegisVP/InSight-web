@@ -23,4 +23,4 @@ const dietSlice = createSlice({
   },
 });
 
-export const dietReducer = dietSlice.reducer;
+export default dietSlice.reducer;

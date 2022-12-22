@@ -1,68 +1,77 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDiet } from 'redux/diet/dietSelectors';
-import { getDiet } from 'redux/diet/dietOperations';
+import { fetchDiet, fetchUserDiet } from 'redux/diet/dietOperations';
 import { setParams } from 'redux/user/userSlice';
-import axios from 'axios';
+import { useAuth } from 'hooks/useAuth';
+import { selectIsLoadingDiet, selectUserParams } from 'redux/selectors';
 // import { } from './DailyCaloriesForm.styled';
 
 export const DailyCaloriesForm = () => {
-  const [height, setHeight] = useState('');
-  const [age, setAge] = useState('');
-  const [currentWeight, setCurrentWeight] = useState('');
-  const [desireWeight, setDesireWeight] = useState('');
-  const [bloodType, setBloodType] = useState(1);
-
+  const userParams = useSelector(selectUserParams);
   const dispatch = useDispatch();
-  const dietInfo = useSelector(selectDiet);
-  console.log(dietInfo);
 
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2E0NDExNzY4M2ZiZTA1YjI5MDYzZWQiLCJpYXQiOjE2NzE3MDg5NTF9.rgT3hPGpuynrMmxdayA_rzVrcxzSIeeXihnf0mXNQQU';
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  let height = userParams.height;
+  let age = userParams.age;
+  let currentWeight = userParams.currentWeight;
+  let desireWeight = userParams.desireWeight;
+  let bloodType = userParams.bloodType;
+
+  // const [height, setHeight] = useState(userParams?.height);
+  // const [age, setAge] = useState('');
+  // const [currentWeight, setCurrentWeight] = useState('');
+  // const [desireWeight, setDesireWeight] = useState('');
+  // const [bloodType, setBloodType] = useState(3);
+
+  const { isLoggedIn } = useAuth();
+  const isLoading = useSelector(selectIsLoadingDiet);
 
   const handleChange = e => {
+    const val = parseInt(e.currentTarget.value) || 0;
     switch (e.currentTarget.name) {
       case 'height':
-        setHeight(e.currentTarget.value);
+        height = val;
         break;
       case 'age':
-        setAge(e.currentTarget.value);
+        age = val;
         break;
       case 'currentWeight':
-        setCurrentWeight(e.currentTarget.value);
+        currentWeight = val;
         break;
       case 'desireWeight':
-        setDesireWeight(e.currentTarget.value);
+        desireWeight = val;
         break;
       default:
         return;
     }
+    dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
   };
 
   const onOptionChange = e => {
-    setBloodType(e.currentTarget.value);
+    bloodType = parseInt(e.currentTarget.value);
+    dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
   };
 
-  const resetForm = () => {
-    setHeight('');
-    setAge('');
-    setCurrentWeight('');
-    setDesireWeight('');
-    setBloodType(1);
-  };
+  // const resetForm = () => {
+  //   setHeight('');
+  //   setAge('');
+  //   setCurrentWeight('');
+  //   setDesireWeight('');
+  //   setBloodType(1);
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!token) {
-      dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
-    } else {
-      dispatch(getDiet({ height, age, currentWeight, desireWeight, bloodType }));
-    }
-    resetForm();
-  };
+    dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
 
+    if (isLoggedIn) {
+      dispatch(fetchUserDiet({ height, age, currentWeight, desireWeight, bloodType }));
+    } else {
+      dispatch(fetchDiet({ height, age, currentWeight, desireWeight, bloodType }));
+    }
+    // resetForm();
+  };
+  console.log({ bloodType });
   return (
     <form onSubmit={handleSubmit} autoComplete="off">
       <h2>Calculate your daily calorie intake right now</h2>
@@ -84,18 +93,20 @@ export const DailyCaloriesForm = () => {
       </label>
       <p>Blood type *</p>
       <label>
-        <input type="radio" name="bloodType" value="1" checked={bloodType === '1'} onChange={onOptionChange} />1
+        <input type="radio" name="bloodType" value="1" checked={bloodType === 1} onChange={onOptionChange} />1
       </label>
       <label>
-        <input type="radio" name="bloodType" value="2" checked={bloodType === '2'} onChange={onOptionChange} />2
+        <input type="radio" name="bloodType" value="2" checked={bloodType === 2} onChange={onOptionChange} />2
       </label>
       <label>
-        <input type="radio" name="bloodType" value="3" checked={bloodType === '3'} onChange={onOptionChange} />3
+        <input type="radio" name="bloodType" value="3" checked={bloodType === 3} onChange={onOptionChange} />3
       </label>
       <label>
-        <input type="radio" name="bloodType" value="4" checked={bloodType === '4'} onChange={onOptionChange} />4
+        <input type="radio" name="bloodType" value="4" checked={bloodType === 4} onChange={onOptionChange} />4
       </label>
-      <button type="submit">Start loosing weight</button>
+      <button type="submit" disabled={isLoading}>
+        Start loosing weight
+      </button>
     </form>
   );
 };

@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/user/userOperations';
 import { useAuth } from 'hooks/useAuth';
+import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
 const MainPageSelector = lazy(() => import('pages/MainPageSelector'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -44,7 +45,7 @@ export const App = () => {
           <Route path="google" element={<GoogleRedirect />} />
           <Route path="google-auth" element={<GoogleAuth />} />
 
-          <Route path="calculator" element={<Calculator />} />
+          <Route path="calculator" element={<DailyCaloriesForm />} />
           <Route path="diary" element={<Diary />} />
         </Route>
 
