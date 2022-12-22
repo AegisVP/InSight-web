@@ -6,7 +6,7 @@ export const Backdrop = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100wh;
+  height: 100vh;
 
   display: flex;
   justify-content: center;
@@ -30,7 +30,12 @@ export const Window = styled.div`
     height: 572px;
     flex-direction: column;
     align-items: center;
-  } ;
+  }
+
+  // max-width: calc(100vw - 48px);
+  // max-height: calc(100vh - 24px);
+
+  // background-color: white;
 `;
 
 export const Title = styled.h2`

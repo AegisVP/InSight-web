@@ -10,7 +10,7 @@ export function Modal({ onClose, children }) {
   useEffect(() => {
     const hadleKeyDown = event => {
       if (event.code === 'Escape') {
-        onclose();
+        onClose();
       }
     };
     window.addEventListener('keydown', hadleKeyDown);
@@ -30,8 +30,9 @@ export function Modal({ onClose, children }) {
     <Backdrop onClick={handleBackdropClick}>
       <Window onClose={onClose}>
         {/* <CloseButton type ="button" onClick={onClose}></CloseButton> */}
-        <Title>Your recommended daily calorie intake is</Title>
+        {/* <Title>Your recommended daily calorie intake is</Title> */}
         {/* <Button type="button" onClick={onClose}>Start loosing weight</Button> */}
+        {children}
       </Window>
     </Backdrop>,
     modalRoot

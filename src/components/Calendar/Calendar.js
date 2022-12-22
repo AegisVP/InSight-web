@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Block, CalendarBox, DateText, Icon, Modal } from './Calendar.styled';
 
-export const Calendar = () => {
+export const Calendar = ({ screenWidth }) => {
   const [choseDate, setChoseDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,20 +15,6 @@ export const Calendar = () => {
       };
     }
   });
-
-  const useWindowWidth = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    useEffect(() => {
-      function handleResize() {
-        setWindowWidth(window.innerWidth);
-      }
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    return windowWidth;
-  };
-
-  const screenWidth = useWindowWidth();
 
   const handleChoseDate = e => {
     setIsOpen(!isOpen);
