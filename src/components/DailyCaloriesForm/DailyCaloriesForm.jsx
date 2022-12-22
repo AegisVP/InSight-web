@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDiet, selectUserInfo } from 'redux/diet/dietSelectors';
-import { getDiet, getUserInfo } from 'redux/diet/dietOperations';
+import { selectDiet } from 'redux/diet/dietSelectors';
+import { getDiet } from 'redux/diet/dietOperations';
+import { setParams } from 'redux/user/userSlice';
 import axios from 'axios';
 // import { } from './DailyCaloriesForm.styled';
 
@@ -15,11 +16,11 @@ export const DailyCaloriesForm = () => {
   const dispatch = useDispatch();
   const dietInfo = useSelector(selectDiet);
   console.log(dietInfo);
-  const userInfo = useSelector(selectUserInfo);
-  console.log(userInfo);
+
   const token =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2E0NDExNzY4M2ZiZTA1YjI5MDYzZWQiLCJpYXQiOjE2NzE3MDg5NTF9.rgT3hPGpuynrMmxdayA_rzVrcxzSIeeXihnf0mXNQQU';
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
   const handleChange = e => {
     switch (e.currentTarget.name) {
       case 'height':
@@ -55,7 +56,7 @@ export const DailyCaloriesForm = () => {
     e.preventDefault();
 
     if (!token) {
-      dispatch(getUserInfo({ height, age, currentWeight, desireWeight, bloodType }));
+      dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
     } else {
       dispatch(getDiet({ height, age, currentWeight, desireWeight, bloodType }));
     }
