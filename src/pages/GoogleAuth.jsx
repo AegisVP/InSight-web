@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router';
-import { googleLogin } from 'redux/user/userSlice';
+import { googleLogin } from 'redux/user/auth/authSlice';
 
 const GoogleAuth = () => {
   const dispatch = useDispatch();
