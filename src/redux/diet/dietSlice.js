@@ -1,22 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { handlePending, handleFulfilled, handleRejected } from 'redux/utils/defaultHandlers';
-import { getDiet } from './dietOperations';
 import { handleGettingDiet } from './dietHandlers';
+import { fetchDiet, fetchUserDiet } from './dietOperations';
 
 const initialState = {
-  dailyIntake: 0,
-  stopProd: [],
-  // params: {
-  //   height: 0,
-  //   age: 0,
-  //   currentWeight: 0,
-  //   desireWeight: 0,
-  //   bloodType: 0,
-  //   proposedDiet: {
-  //     dailyIntake: 0,
-  //     stopProd: [],
-  //   },
-  // },
+  dailyCalories: 0,
+  stopProducts: [],
   isLoading: false,
   error: null,
 };
@@ -24,17 +13,10 @@ const initialState = {
 const dietSlice = createSlice({
   name: 'diet',
   initialState,
-  // reducers: builder => {
-  //   builder
-  //     .addCase(getUserInfo.pending, handlePending)
-  //     .addCase(getUserInfo.fulfilled, handleGettingUserInfo)
-  //     .addCase(getUserInfo.rejected, handleRejected);
-  // },
   extraReducers: builder => {
     builder
-      .addCase(getDiet.pending, handlePending)
-      .addCase(getDiet.fulfilled, handleGettingDiet)
-      .addCase(getDiet.rejected, handleRejected)
+      .addCase(fetchDiet.fulfilled, handleGettingDiet)
+      .addCase(fetchUserDiet.fulfilled, handleGettingDiet)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/fulfilled'), handleFulfilled)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);

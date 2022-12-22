@@ -4,7 +4,7 @@ import { handleAddDiaryEntry, handleDeleteDiaryEntry, handleGetDailyDiary } from
 import { addDiaryEntry, deleteDiaryEntry, getDailyDiary } from './diaryOperations';
 
 const initialState = {
-  date: '',
+  date: null,
   inputDiary: [],
   isLoading: false,
   error: null,
@@ -24,4 +24,4 @@ const diarySlice = createSlice({
   },
 });
 
-export const diaryReducer = diarySlice.reducer;
+export default diarySlice.reducer;

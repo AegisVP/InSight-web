@@ -1,35 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { handlePending, handleFulfilled, handleRejected } from 'redux/utils/defaultHandlers';
-import { handleLoginUser, handleRegisterUser, handleLogoutUser, handleRefreshUser } from './userHandlers';
+import {
+  handleLoginUser,
+  handleRegisterUser,
+  handleLogoutUser,
+  handleRefreshUser,
+  handleGoogleLogin,
+  handleSetParams,
+} from './userHandlers';
 import { loginUser, logoutUser, refreshUser, registerUser } from './userOperations';
 
-const initialState = {
-  auth: {
-    name: '',
-    token: '',
-    isNew: true,
-    isOAuth2: false,
-  },
-  params: {
-    email: '',
-    height: 0,
-    age: 0,
-    current_weight: 0,
-    desired_weight: 0,
-    blood_type: 0,
-    daily_calorie: 0,
-  },
+export const initialParamsState = {
+  height: 0,
+  age: 0,
+  currentWeight: 0,
+  desiredWeight: 0,
+  bloodType: 0,
+};
+
+export const initialUserState = {
+  name: null,
+  email: null,
+  token: null,
+  params: initialParamsState,
   isLoading: false,
   error: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
-  reducer: {
-    setParams: (state, action) => {
-      state.params = action.payload;
-    },
+  initialState: initialUserState,
+  reducers: {
+    googleLogin: handleGoogleLogin,
+    setParams: handleSetParams,
   },
   extraReducers: builder => {
     builder
@@ -43,5 +46,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setParams } = userSlice.actions;
-export const userReducer = userSlice.reducer;
+export const { googleLogin, setParams } = userSlice.actions;
+export default userSlice.reducer;

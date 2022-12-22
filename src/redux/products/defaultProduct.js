@@ -1,12 +1,12 @@
 export const defaultProduct = {
   _id: {
-    $oid: '',
+    $oid: null,
   },
-  categories: [''],
+  categories: [],
   weight: 100,
   title: {
-    ru: '',
-    ua: '',
+    ru: null,
+    ua: null,
   },
   calories: 0,
   groupBloodNotAllowed: [null, true, false, false, false],

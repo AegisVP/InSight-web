@@ -45,11 +45,13 @@ a {
 }
 
 /* 
-Remove list point
+Remove list point and standart margin/padding
 */
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* 

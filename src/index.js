@@ -7,15 +7,18 @@ import { Provider } from 'react-redux';
 import './index.css';
 import { App } from './components/App/App';
 import { theme } from './components/Common/Theme';
-import { store } from './redux/store';
+import { persistor, store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.createRoot(document.getElementById('page-root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <BrowserRouter basenae="/InSight-web/">
-          <App />
-        </BrowserRouter>
+        <PersistGate persistor={persistor}>
+          <BrowserRouter basenae="/InSight-web/">
+            <App />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

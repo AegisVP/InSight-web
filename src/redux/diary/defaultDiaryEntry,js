@@ -1,9 +1,9 @@
 export const defaultDiaryEntry = {
-  date: '',
+  date: null,
   productInput: [
     {
       _id: {
-        $oid: '',
+        $oid: null,
       },
       weight: 0,
     },

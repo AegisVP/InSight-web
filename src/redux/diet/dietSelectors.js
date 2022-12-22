@@ -1,3 +1,3 @@
-// export const selectUserInfo = state => state.diet.params;
-
-export const selectDiet = state => state.diet;
+export const selectDiet = store => store.diet;
+export const selectIsLoadingDiet = store => store.diet.isLoading;
+export const selectErrorDiet = store => store.diet.error;
