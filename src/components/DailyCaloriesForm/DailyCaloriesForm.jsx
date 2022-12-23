@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDiet, fetchUserDiet } from 'redux/diet/dietOperations';
 import { setParams } from 'redux/user/userSlice';
