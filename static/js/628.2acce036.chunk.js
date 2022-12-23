@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkslim_mom=self.webpackChunkslim_mom||[]).push([[628],{3628:function(e,s,o){o.r(s);var r=o(7689),u=o(3708),l=o(184);s.default=function(){var e="".concat(u._.apiServerAddress,"/user/google");return console.log({url:e}),(0,l.jsx)(r.Fg,{to:e})}}}]);
+//# sourceMappingURL=628.2acce036.chunk.js.map
