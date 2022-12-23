@@ -3,7 +3,8 @@ import { fetchDiet, fetchUserDiet } from 'redux/diet/dietOperations';
 import { setParams } from 'redux/user/userSlice';
 import { useAuth } from 'hooks/useAuth';
 import { selectIsLoadingDiet, selectUserParams } from 'redux/selectors';
-// import { } from './DailyCaloriesForm.styled';
+// import { } from './DailyCaloriesForm.styled'
+// import { schema } from '../validation/joiValidation';
 
 export const DailyCaloriesForm = () => {
   const userParams = useSelector(selectUserParams);
@@ -16,9 +17,9 @@ export const DailyCaloriesForm = () => {
   let bloodType = userParams.bloodType;
 
   // const [height, setHeight] = useState(userParams?.height);
-  // const [age, setAge] = useState('');
-  // const [currentWeight, setCurrentWeight] = useState('');
-  // const [desireWeight, setDesireWeight] = useState('');
+  // const [age, setAge] = useState(userParams?.age);
+  // const [currentWeight, setCurrentWeight] = useState(userParams?.currentWeight);
+  // const [desireWeight, setDesireWeight] = useState(userParams?.setDesireWeight);
   // const [bloodType, setBloodType] = useState(3);
 
   const { isLoggedIn } = useAuth();
@@ -60,6 +61,12 @@ export const DailyCaloriesForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    // const data = { height, age, currentWeight, desireWeight, bloodType };
+    // const validationResult = schema.validate(data);
+    // if (validationResult.error) {
+    //   alert('field is required');
+    // }
 
     dispatch(setParams({ height, age, currentWeight, desireWeight, bloodType }));
 
