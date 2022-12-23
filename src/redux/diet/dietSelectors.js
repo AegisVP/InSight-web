@@ -1,3 +1,3 @@
-export const selectDiet = store => store.user.diet;
-export const selectIsLoadingDiet = store => store.user.diet.isLoading;
-export const selectErrorDiet = store => store.user.diet.error;
+export const selectDiet = store => store.diet;
+export const selectIsLoadingDiet = store => store.diet.isLoading;
+export const selectErrorDiet = store => store.diet.error;

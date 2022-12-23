@@ -1,21 +1,15 @@
-// import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
-import { LoginForm } from 'components/LoginForm/LoginForm';
-
-import { Wrapper, Layer, Leaves, Banana, Strawberry } from 'components/MainPage/MainPageStyled';
+import { useSelector } from 'react-redux';
+import { selectDiet, selectUserParams } from 'redux/selectors';
 
 const MainPageSelector = () => {
-  const { isLoggedin } = useAuth();
+  const { isLoggedIn } = useAuth();
+  const { age } = useSelector(selectUserParams);
+  const { dailyCalories } = useSelector(selectDiet);
+  const isParamsEntered = age !== 0 && dailyCalories !== 0 ? true : false;
 
-  return (
-    <Wrapper>
-      {isLoggedin ? 'calculator' : <LoginForm />}
-      <Strawberry />
-      <Banana />
-      <Leaves />
-      <Layer />
-    </Wrapper>
-  );
+  return <Navigate to={isParamsEntered ? (isLoggedIn ? 'diary' : 'login') : 'calculator'} />;
 };
 
 export default MainPageSelector;

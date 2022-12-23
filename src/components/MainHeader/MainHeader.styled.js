@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
     max-width: 768px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: ${p => p.theme.spacing[5]}px;
     padding-bottom: ${p => p.theme.spacing[3]}px;
     border-bottom: ${p => p.theme.border.header};

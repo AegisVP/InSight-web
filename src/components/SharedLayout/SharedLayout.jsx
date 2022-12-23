@@ -7,20 +7,21 @@ import { selectUserIsLoggedIn } from 'redux/selectors';
 
 export const SharedLayout = () => {
   const isLoggedIn = useSelector(selectUserIsLoggedIn);
-
+  
   return (
-    <>
+    <div>
       {isLoggedIn ? (
         <HeaderBarIsLogedIn>
           <MainHeader />
-          <Outlet />
         </HeaderBarIsLogedIn>
       ) : (
         <HeaderBar>
           <MainHeader />
-          <Outlet />
         </HeaderBar>
       )}
-    </>
+      <div style={{ outline: '2px solid green' }}>
+        <Outlet />
+      </div>
+    </div>
   );
 };
