@@ -5,7 +5,6 @@ import { deleteDiaryEntry } from 'redux/diary/diaryOperations';
 import { selectDiaryInput } from 'redux/selectors';
 import { loadProducts } from '../../redux/products/productsOperations';
 import { addDiaryEntry, getDailyDiary } from '../../redux/diary/diaryOperations';
-//import axios from 'axios'
 import {
   SForm,
   DContainer,
@@ -23,9 +22,7 @@ import {
 } from './DairyFormStyle';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-//const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2E3NzM5ZTMxZDIxM2ExZmJlZjRmMGQiLCJpYXQiOjE2NzE5MTg1NjV9.M9A0s5-i_2J1sehR_teX5YPe4Yngl8hwgqCLY-dfrII'
 
-//axios.defaults.headers.common.Authorization = `Bearer${myToken }`
 //import { Modal } from 'components/Modal/Modal';
 
 export const DairyForm = ({ screenWidth, day }) => {
