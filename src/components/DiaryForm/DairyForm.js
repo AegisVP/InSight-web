@@ -5,6 +5,7 @@ import { deleteDiaryEntry } from 'redux/diary/diaryOperations';
 import { selectDiaryInput } from 'redux/selectors';
 import { loadProducts } from '../../redux/products/productsOperations';
 import { addDiaryEntry, getDailyDiary } from '../../redux/diary/diaryOperations';
+//import axios from 'axios'
 import {
   SForm,
   DContainer,
@@ -20,7 +21,11 @@ import {
   UlDairy,
   ModalButton,
 } from './DairyFormStyle';
-//import { useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+//const myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2E3NzM5ZTMxZDIxM2ExZmJlZjRmMGQiLCJpYXQiOjE2NzE5MTg1NjV9.M9A0s5-i_2J1sehR_teX5YPe4Yngl8hwgqCLY-dfrII'
+
+//axios.defaults.headers.common.Authorization = `Bearer${myToken }`
 //import { Modal } from 'components/Modal/Modal';
 
 export const DairyForm = ({ screenWidth, day }) => {
@@ -28,12 +33,17 @@ export const DairyForm = ({ screenWidth, day }) => {
   const indexOfFood = null;
   const form = document.querySelector('dairyproduct');
   let prod = [];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('title') ?? '';
+  console.log('query', query)
+
 
   const [isOpen, setIsOpen] = useState(false);
 
-  //useEffect(() => {
-  // dispatch(getDailyDiary(day))
-  //    }, [dispatch, day]);
+  useEffect(() => {
+    dispatch(getDailyDiary(day))
+    console.log('day', day)
+      }, [dispatch, day]);
 
   prod = useSelector(selectDiaryInput);
 
@@ -48,11 +58,9 @@ export const DairyForm = ({ screenWidth, day }) => {
   };
 
   async function searchInBase(e) {
-    console.log('search', e.target.value);
-    if (e.target.dataset !== 'dairyproduct') return;
-    if (e.target.value === '') return;
-    dispatch(loadProducts(e.target.value));
-  }
+      setSearchParams(e.target.value === '' ? {} : { title: e.target.value })
+      dispatch(loadProducts(query))
+  } 
 
   console.log({ date: todayDate() });
 
@@ -70,13 +78,22 @@ export const DairyForm = ({ screenWidth, day }) => {
     form.reset();
   }
 
+
   const arrOfProducts = useSelector(selectProducts);
 
   return (
     <>
       <DContainer>
-        <SForm id="dairyform" onChange={searchInBase} onSubmit={sendMarktoBase}>
-          <DairyInput id="dairyproduct" name="dairyproduct" data-name="dairyproduct" placeholder="Enter product name" />
+        <SForm id="dairyform"
+          onChange={searchInBase}
+          onSubmit={sendMarktoBase}>
+          <DairyInput id="dairyproduct"
+            name="dairyproduct"
+            data-name="dairyproduct"
+            placeholder="Enter product name"
+            onChange={searchInBase}
+            list='listOfProductMatches'
+          />
           {arrOfProducts && arrOfProducts.length > 0 && <ListOfProductMatches arr={arrOfProducts} />}
           <DairyInput id="dairyweight" name="dairyweight" placeholder="Grams" />
           <ButtonDairy>
@@ -84,7 +101,6 @@ export const DairyForm = ({ screenWidth, day }) => {
             <Plus>+</Plus>
           </ButtonDairy>
         </SForm>
-        {/* <ListOfEatenProdactsByDay prod={prod} /> */}
         {prod.length > 0 && <ListOfEatenProdactsByDay products={[]} />}
 
         {/*}  {screenWidth > 767 && (
@@ -130,19 +146,21 @@ export const DairyForm = ({ screenWidth, day }) => {
   );
 };
 
-const ListOfProductMatches = ({ prod }) => {
-  const dispatch = useDispatch();
-  if (prod.length === 0) return;
+const ListOfProductMatches = () => {
+  const array = useSelector(selectProducts)
+  if (array.length === 0) return;
   return (
-    <ul>
-      {prod.map(({ title: { ua }, _id }) => {
-        return (
-          <li key={_id} onClick={() => dispatch(loadProducts(ua))}>
-            {ua}
-          </li>
-        );
-      })}
-    </ul>
+    <datalist id='listOfProductMatches'>
+      {array && array.length> 0 && array.map(({ title: { ua }, _id }) => 
+        <option
+          value={ua}
+          key={_id}
+          id={_id}
+         // onChange={()=>}
+        >{ua}</option>
+        )
+      }
+    </datalist>
   );
 };
 

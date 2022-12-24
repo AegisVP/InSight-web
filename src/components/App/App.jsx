@@ -1,6 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router';
+import {
+  //Navigate,
+  Route, Routes
+} from 'react-router';
 
 import { Loader } from 'components/Loader/Loader';
 import { authHeader } from 'redux/utils/authHeader';
@@ -44,7 +47,7 @@ export const App = () => {
           </Route>
         </Route>
 
-        <Route path="*" element={<Navigate to="/" />} />
+        {/*<Route path="*" element={<Navigate to="/" />} />*/}
       </Routes>
     </Suspense>
   );

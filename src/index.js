@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('page-root')).render(
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <BrowserRouter basename="/InSight-web/">
+          <BrowserRouter basename="/InSight-web">
             <App />
           </BrowserRouter>
         </PersistGate>
