@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/InSight-web/static/css/main.be59e2fb.css",
-    "main.js": "/InSight-web/static/js/main.31c956f3.js",
+    "main.js": "/InSight-web/static/js/main.127b73a1.js",
     "static/js/963.846a916c.chunk.js": "/InSight-web/static/js/963.846a916c.chunk.js",
     "static/js/991.51298218.chunk.js": "/InSight-web/static/js/991.51298218.chunk.js",
     "static/js/588.cd39ec35.chunk.js": "/InSight-web/static/js/588.cd39ec35.chunk.js",
@@ -9,11 +9,11 @@
     "static/js/145.0c3fe1d3.chunk.js": "/InSight-web/static/js/145.0c3fe1d3.chunk.js",
     "static/js/628.2acce036.chunk.js": "/InSight-web/static/js/628.2acce036.chunk.js",
     "static/js/468.85926f4f.chunk.js": "/InSight-web/static/js/468.85926f4f.chunk.js",
-    "static/js/28.9dd6644d.chunk.js": "/InSight-web/static/js/28.9dd6644d.chunk.js",
+    "static/js/993.29d4d9b8.chunk.js": "/InSight-web/static/js/993.29d4d9b8.chunk.js",
     "static/js/984.f5b29201.chunk.js": "/InSight-web/static/js/984.f5b29201.chunk.js",
     "static/js/694.eea4a402.chunk.js": "/InSight-web/static/js/694.eea4a402.chunk.js",
-    "static/css/44.54bb5762.chunk.css": "/InSight-web/static/css/44.54bb5762.chunk.css",
-    "static/js/44.8d86957f.chunk.js": "/InSight-web/static/js/44.8d86957f.chunk.js",
+    "static/css/835.3d11fbd4.chunk.css": "/InSight-web/static/css/835.3d11fbd4.chunk.css",
+    "static/js/835.0c3d7e46.chunk.js": "/InSight-web/static/js/835.0c3d7e46.chunk.js",
     "static/media/strawbeery.png": "/InSight-web/static/media/strawbeery.b1b43b9a5928a0727cdd.png",
     "static/media/banana.png": "/InSight-web/static/media/banana.c05dd312ed7aeb67d508.png",
     "static/media/verdana-bold.ttf": "/InSight-web/static/media/verdana-bold.c4e1b53d02ea7938d5bc.ttf",
@@ -40,7 +40,7 @@
     "index.html": "/InSight-web/index.html",
     "static/media/Calendar.svg": "/InSight-web/static/media/Calendar.141071429de327afe95afb87e4c70fa4.svg",
     "main.be59e2fb.css.map": "/InSight-web/static/css/main.be59e2fb.css.map",
-    "main.31c956f3.js.map": "/InSight-web/static/js/main.31c956f3.js.map",
+    "main.127b73a1.js.map": "/InSight-web/static/js/main.127b73a1.js.map",
     "963.846a916c.chunk.js.map": "/InSight-web/static/js/963.846a916c.chunk.js.map",
     "991.51298218.chunk.js.map": "/InSight-web/static/js/991.51298218.chunk.js.map",
     "588.cd39ec35.chunk.js.map": "/InSight-web/static/js/588.cd39ec35.chunk.js.map",
@@ -48,14 +48,14 @@
     "145.0c3fe1d3.chunk.js.map": "/InSight-web/static/js/145.0c3fe1d3.chunk.js.map",
     "628.2acce036.chunk.js.map": "/InSight-web/static/js/628.2acce036.chunk.js.map",
     "468.85926f4f.chunk.js.map": "/InSight-web/static/js/468.85926f4f.chunk.js.map",
-    "28.9dd6644d.chunk.js.map": "/InSight-web/static/js/28.9dd6644d.chunk.js.map",
+    "993.29d4d9b8.chunk.js.map": "/InSight-web/static/js/993.29d4d9b8.chunk.js.map",
     "984.f5b29201.chunk.js.map": "/InSight-web/static/js/984.f5b29201.chunk.js.map",
     "694.eea4a402.chunk.js.map": "/InSight-web/static/js/694.eea4a402.chunk.js.map",
-    "44.54bb5762.chunk.css.map": "/InSight-web/static/css/44.54bb5762.chunk.css.map",
-    "44.8d86957f.chunk.js.map": "/InSight-web/static/js/44.8d86957f.chunk.js.map"
+    "835.3d11fbd4.chunk.css.map": "/InSight-web/static/css/835.3d11fbd4.chunk.css.map",
+    "835.0c3d7e46.chunk.js.map": "/InSight-web/static/js/835.0c3d7e46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.be59e2fb.css",
-    "static/js/main.31c956f3.js"
+    "static/js/main.127b73a1.js"
   ]
 }
