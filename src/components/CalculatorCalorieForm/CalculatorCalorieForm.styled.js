@@ -23,13 +23,22 @@ const Title = styled.h2`
   }
 `;
 const FormikForm = styled(Form)`
-  width: 240px;
+  width: 100%;
+  padding: 16px;
+  position: absolute;
+  top: calc(100% / 5.7);
 
   @media screen and (min-width: 768px) {
     width: 605px;
+    position: absolute;
+    top: calc(100% / 5.7);
+    margin-left: calc((100% - 605px) / 2);
   }
 
   @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: calc(100% / 2.9);
+    left: calc(100% / 80);
     margin: 0;
   }
 `;

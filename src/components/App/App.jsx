@@ -6,6 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { authHeader } from 'redux/utils/authHeader';
 import { refreshUser } from 'redux/user/userOperations';
 import { useAuth } from 'hooks/useAuth';
+import MainPageSelector from 'components/MainPage/MainPageSelector';
 
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -14,7 +15,7 @@ const GoogleRedirect = lazy(() => import('pages/GoogleRedirect'));
 const Calculator = lazy(() => import('pages/Calculator'));
 const DiaryPage = lazy(() => import('pages/DiaryPage'));
 
-const CommonLayout = lazy(() => import('pages/CommonLayout'));
+// const CommonLayout = lazy(() => import('pages/CommonLayout'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,7 @@ export const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<CommonLayout />}>
-          <Route index element={<Calculator />} />
+        <Route path="/" element={<MainPageSelector />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegistrationPage />} />
 

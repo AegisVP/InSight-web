@@ -1,15 +1,19 @@
 // import { useSelector } from 'react-redux';
-import { useAuth } from 'hooks/useAuth';
-import { LoginForm } from 'components/LoginForm/LoginForm';
+import { useSelector } from 'react-redux';
 
 import { Wrapper, Layer, Leaves, Banana, Strawberry } from 'components/MainPage/MainPageStyled';
+import { MainHeader } from 'components/MainHeader/MainHeader';
+import { selectUserIsLoggedIn } from 'redux/selectors';
+import CalculatorCalorieForm from 'components/CalculatorCalorieForm';
+import LoginPage from 'pages/LoginPage';
 
 const MainPageSelector = () => {
-  const { isLoggedin } = useAuth();
+  const isLoggedIn = useSelector(selectUserIsLoggedIn);
 
   return (
     <Wrapper>
-      {isLoggedin ? 'calculator' : <LoginForm />}
+      <MainHeader />
+      {isLoggedIn ? <CalculatorCalorieForm /> : <LoginPage />}
       <Strawberry />
       <Banana />
       <Leaves />

@@ -27,7 +27,8 @@ export const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: calc(100vh - (${theme.spacing[5]}px + 40px));
+  height: 100vh;
+  /* height: calc(100vh - (${theme.spacing[5]}px + 40px)); */
 `;
 
 const StrawberryStyled = styled.img`
@@ -36,6 +37,11 @@ const StrawberryStyled = styled.img`
   //in figma shedow 10px 20px 50px ??
   filter: drop-shadow(10px 20px 10px rgba(0, 0, 0, 0.3));
   transform: matrix(-1, 0, 0, 1, 0, 0);
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
   @media (max-width: 1280px) {
     width: calc(100% / 3.69);
     height: calc(100% / 5.04);
@@ -53,6 +59,11 @@ const StrawberryStyled = styled.img`
 const BananaStyled = styled.img`
   position: absolute;
   z-index: -3;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
   @media (max-width: 1280px) {
     width: calc(100% / 1.04);
     height: calc(100% / 1.94);
@@ -70,6 +81,11 @@ const BananaStyled = styled.img`
 const LayerStyled = styled.img`
   position: absolute;
   z-index: -4;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
   @media (max-width: 1280px) {
     width: calc(100% / 1.39);
     height: calc(100% / 1.37);
@@ -89,6 +105,11 @@ const LeavesStyled = styled.img`
   z-index: -1;
   animation: anim 10s infinite linear;
   animation-delay: 2.5s;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
   @media (max-width: 1280px) {
     width: calc(100% / 1.45);
     height: calc(100% / 1.7);
