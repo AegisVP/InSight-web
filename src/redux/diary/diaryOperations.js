@@ -10,9 +10,15 @@ export const addDiaryEntry = createAsyncThunk('diary/addDiaryEntry', async ({ da
   }
 });
 
+<<<<<<< Updated upstream
 export const deleteDiaryEntry = createAsyncThunk('diary/deleteDiaryEntry', async ({ day, id }, thunkAPI) => {
   try {
     const response = await axios.delete(`/diary/${day}/${id}`);
+=======
+export const deleteDiaryEntry = createAsyncThunk('diary/deleteDiaryEntry', async (id, day, thunkAPI) => {
+  try {
+    const response = await axios.delete(`/diary/${day}${id}`);
+>>>>>>> Stashed changes
     return response.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
