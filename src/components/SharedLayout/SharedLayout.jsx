@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 
 import { MainHeader } from 'components/MainHeader/MainHeader';
 import { Outlet } from 'react-router-dom';
-import { HeaderBar, HeaderBarIsLogedIn } from '../../pages/Styles/SharedLayout.styled';
+import { HeaderBarIsLogedIn } from './SharedLayout.styled';
 import { selectUserIsLoggedIn } from 'redux/selectors';
-import { Container, Wrapper } from 'pages/Styles/Background.styled';
+import MainPageSelector from 'components/MainPage/MainPageSelector';
 
 export const SharedLayout = () => {
   const isLoggedIn = useSelector(selectUserIsLoggedIn);
-  console.log('isLoggedIn', isLoggedIn)
+  console.log('isLoggedIn', isLoggedIn);
 
   return (
     <>
@@ -18,14 +18,7 @@ export const SharedLayout = () => {
           <Outlet />
         </HeaderBarIsLogedIn>
       ) : (
-        <HeaderBar>
-          <Container>
-            <Wrapper>
-              <MainHeader />
-              <Outlet />
-            </Wrapper>
-          </Container>
-        </HeaderBar>
+        <MainPageSelector />
       )}
     </>
   );
