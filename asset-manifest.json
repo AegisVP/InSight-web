@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/InSight-web/static/css/main.be59e2fb.css",
-    "main.js": "/InSight-web/static/js/main.764c6c66.js",
+    "main.js": "/InSight-web/static/js/main.3b70a7df.js",
     "static/js/991.51298218.chunk.js": "/InSight-web/static/js/991.51298218.chunk.js",
     "static/js/714.87f19a35.chunk.js": "/InSight-web/static/js/714.87f19a35.chunk.js",
     "static/js/145.0c3fe1d3.chunk.js": "/InSight-web/static/js/145.0c3fe1d3.chunk.js",
@@ -29,7 +29,7 @@
     "static/media/avokado.webp": "/InSight-web/static/media/avokado.f1b9b1b26f326580dce0.webp",
     "index.html": "/InSight-web/index.html",
     "main.be59e2fb.css.map": "/InSight-web/static/css/main.be59e2fb.css.map",
-    "main.764c6c66.js.map": "/InSight-web/static/js/main.764c6c66.js.map",
+    "main.3b70a7df.js.map": "/InSight-web/static/js/main.3b70a7df.js.map",
     "991.51298218.chunk.js.map": "/InSight-web/static/js/991.51298218.chunk.js.map",
     "714.87f19a35.chunk.js.map": "/InSight-web/static/js/714.87f19a35.chunk.js.map",
     "145.0c3fe1d3.chunk.js.map": "/InSight-web/static/js/145.0c3fe1d3.chunk.js.map",
@@ -41,6 +41,6 @@
   },
   "entrypoints": [
     "static/css/main.be59e2fb.css",
-    "static/js/main.764c6c66.js"
+    "static/js/main.3b70a7df.js"
   ]
 }
