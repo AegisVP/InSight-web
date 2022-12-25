@@ -21,84 +21,61 @@ import {
   ModalButton,
 } from './DairyFormStyle';
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
-//import { Modal } from 'components/Modal/Modal';
 
 export const DairyForm = ({ screenWidth, day }) => {
   const dispatch = useDispatch();
-  const indexOfFood = null;
-  const form = document.querySelector('dairyproduct');
-  let prod = [];
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('title') ?? '';
-  console.log('query', query)
-
+  const consumedProductList = useSelector(selectDiaryInput);
+  const productList = useSelector(selectProducts);
 
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(getDailyDiary(day))
-    console.log('day', day)
-      }, [dispatch, day]);
-
-  prod = useSelector(selectDiaryInput);
-
-  const todayDate = () => {
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const mon = String(now.getMonth()).padStart(2, '0');
-    const year = now.getFullYear();
-    const genDate = `${day}${mon}${year}`;
-    console.log({ genDate });
-    return genDate;
-  };
+    dispatch(getDailyDiary(day));
+    console.log('day', day);
+  }, [dispatch, day]);
 
   async function searchInBase(e) {
-      setSearchParams(e.target.value === '' ? {} : { title: e.target.value })
-      dispatch(loadProducts(query))
-  } 
-
-  console.log({ date: todayDate() });
+    dispatch(loadProducts(e.target.value));
+  }
 
   function sendMarktoBase(e) {
     e.preventDefault();
-    // send req with product
+
+    const product = productList[0]._id;
+    const weight = e.currentTarget.elements.dairyweight.value;
+
     dispatch(
       addDiaryEntry({
-        // owner: user._id,
-        date: day || todayDate(),
-        product: indexOfFood,
-        weight: form.elements.weight.value,
+        date: day,
+        product,
+        weight,
       })
     );
-    form.reset();
+    document.getElementById('dairyform').reset();
   }
-
 
   const arrOfProducts = useSelector(selectProducts);
 
   return (
     <>
       <DContainer>
-        <SForm id="dairyform"
-          onChange={searchInBase}
-          onSubmit={sendMarktoBase}>
-          <DairyInput id="dairyproduct"
+        <SForm id="dairyform" onSubmit={sendMarktoBase}>
+          <DairyInput
+            id="dairyproduct"
             name="dairyproduct"
             data-name="dairyproduct"
             placeholder="Enter product name"
             onChange={searchInBase}
-            list='listOfProductMatches'
+            list="listOfProductMatches"
           />
-          {arrOfProducts && arrOfProducts.length > 0 && <ListOfProductMatches arr={arrOfProducts} />}
+          {arrOfProducts?.length > 0 && <ListOfProductMatches arr={arrOfProducts} />}
           <DairyInput id="dairyweight" name="dairyweight" placeholder="Grams" />
           <ButtonDairy>
             <Add>Add</Add>
             <Plus>+</Plus>
           </ButtonDairy>
         </SForm>
-        {prod.length > 0 && <ListOfEatenProdactsByDay products={[]} />}
+        {consumedProductList.length > 0 && <ListOfEatenProdactsByDay day={day} />}
 
         {/*}  {screenWidth > 767 && (
           <SForm id="dairyform" onChange={searchInBase} onSubmit={sendMarktoBase}>
@@ -144,36 +121,40 @@ export const DairyForm = ({ screenWidth, day }) => {
 };
 
 const ListOfProductMatches = () => {
-  const array = useSelector(selectProducts)
+  const array = useSelector(selectProducts);
   if (array.length === 0) return;
   return (
-    <datalist id='listOfProductMatches'>
-      {array && array.length> 0 && array.map(({ title: { ua }, _id }) => 
-        <option
-          value={ua}
-          key={_id}
-          id={_id}
-         // onChange={()=>}
-        >{ua}</option>
-        )
-      }
+    <datalist id="listOfProductMatches">
+      {array &&
+        array.length > 0 &&
+        array.map(({ title: { ua }, _id }) => (
+          <option
+            value={ua}
+            key={_id}
+            id={_id}
+            // onChange={()=>}
+          >
+            {ua}
+          </option>
+        ))}
     </datalist>
   );
 };
 
-const ListOfEatenProdactsByDay = day => {
+const ListOfEatenProdactsByDay = ({ day }) => {
   const dispatch = useDispatch();
-  const prod = dispatch(getDailyDiary(day));
+  const prod = useSelector(selectDiaryInput);
+
   return (
     <>
       <UlDairy>
         {prod &&
           prod.map(el => (
-            <DairyProdLi>
+            <DairyProdLi key={el._id}>
               <TitleDairy>{el.title.ua}</TitleDairy>
               <WeightDairy>{el.weight} g</WeightDairy>
               <CalDairy>{el.calories} kcal</CalDairy>
-              <ButtonX onClick={e => dispatch(deleteDiaryEntry(e.target._id))}>X</ButtonX>
+              <ButtonX onClick={e => dispatch(deleteDiaryEntry({ day, id: el._id }))}>X</ButtonX>
             </DairyProdLi>
           ))}
       </UlDairy>
