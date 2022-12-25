@@ -9,10 +9,7 @@ export const MainHeader = () => {
   const isLoggedIn = useSelector(selectUserIsLoggedIn);
   return (
     <>
-      <HeaderContainer>
-        [LOGO] - - [Calculator] [Diary]
-        {isLoggedIn ? <NavHeader /> : <AuthHeader />}
-      </HeaderContainer>
+      <HeaderContainer>{isLoggedIn ? <NavHeader /> : <AuthHeader />}</HeaderContainer>
     </>
   );
 };
