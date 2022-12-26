@@ -3,7 +3,21 @@ import { fetchDiet, fetchUserDiet } from 'redux/diet/dietOperations';
 import { setParams } from 'redux/user/userSlice';
 import { useAuth } from 'hooks/useAuth';
 import { selectIsLoadingDiet, selectUserParams } from 'redux/selectors';
-// import { } from './DailyCaloriesForm.styled'
+import {
+  FormField,
+  Title,
+  InputWrapper,
+  InputBlock,
+  Label,
+  InputField,
+  LabelValue,
+  Button,
+  RadioGroupContainer,
+  RadioTitle,
+  RadioWrapper,
+  RadioLabel,
+  RadioField,
+} from './DailyCaloriesForm.styled';
 // import { schema } from '../validation/joiValidation';
 
 export const DailyCaloriesForm = () => {
@@ -79,40 +93,75 @@ export const DailyCaloriesForm = () => {
   };
   console.log({ bloodType });
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <h2>Calculate your daily calorie intake right now</h2>
-      <label>
-        Height *
-        <input type="number" name="height" value={height} onChange={handleChange} />
-      </label>
-      <label>
-        Age *
-        <input type="number" name="age" value={age} onChange={handleChange} />
-      </label>
-      <label>
-        Current weight *
-        <input type="number" name="currentWeight" value={currentWeight} onChange={handleChange} />
-      </label>
-      <label>
-        Desired weight *
-        <input type="number" name="desireWeight" value={desireWeight} onChange={handleChange} />
-      </label>
-      <p>Blood type *</p>
-      <label>
-        <input type="radio" name="bloodType" value="1" checked={bloodType === 1} onChange={onOptionChange} />1
-      </label>
-      <label>
-        <input type="radio" name="bloodType" value="2" checked={bloodType === 2} onChange={onOptionChange} />2
-      </label>
-      <label>
-        <input type="radio" name="bloodType" value="3" checked={bloodType === 3} onChange={onOptionChange} />3
-      </label>
-      <label>
-        <input type="radio" name="bloodType" value="4" checked={bloodType === 4} onChange={onOptionChange} />4
-      </label>
-      <button type="submit" disabled={isLoading}>
+    <FormField onSubmit={handleSubmit} autoComplete="off">
+      <Title>Calculate your daily calorie intake right now</Title>
+      <InputWrapper>
+        <InputBlock>
+          <Label>
+            <InputField type="text" placeholder="" name="height" value={height} onChange={handleChange} />
+            <LabelValue> Height *</LabelValue>
+          </Label>
+          <Label>
+            <InputField type="text" placeholder="" name="age" value={age} onChange={handleChange} />
+            <LabelValue> Age *</LabelValue>
+          </Label>
+          <Label>
+            <InputField type="text" placeholder="" name="currentWeight" value={currentWeight} onChange={handleChange} />
+            <LabelValue> Current weight *</LabelValue>
+          </Label>
+        </InputBlock>
+        <InputBlock>
+          <Label>
+            <InputField type="text" placeholder="" name="desireWeight" value={desireWeight} onChange={handleChange} />
+            <LabelValue> Desired weight *</LabelValue>
+          </Label>
+          <RadioGroupContainer>
+            <RadioTitle>Blood type *</RadioTitle>
+            <RadioWrapper>
+              <RadioField
+                id="first"
+                type="radio"
+                name="bloodType"
+                value="1"
+                checked={bloodType === 1}
+                onChange={onOptionChange}
+              />
+              <RadioLabel htmlFor="first">1</RadioLabel>
+              <RadioField
+                id="second"
+                type="radio"
+                name="bloodType"
+                value="2"
+                checked={bloodType === 2}
+                onChange={onOptionChange}
+              />
+
+              <RadioLabel htmlFor="second">2</RadioLabel>
+              <RadioField
+                id="third"
+                type="radio"
+                name="bloodType"
+                value="3"
+                checked={bloodType === 3}
+                onChange={onOptionChange}
+              />
+              <RadioLabel htmlFor="third">3</RadioLabel>
+              <RadioField
+                id="fourth"
+                type="radio"
+                name="bloodType"
+                value="4"
+                checked={bloodType === 4}
+                onChange={onOptionChange}
+              />
+              <RadioLabel htmlFor="fourth">4</RadioLabel>
+            </RadioWrapper>
+          </RadioGroupContainer>
+        </InputBlock>
+      </InputWrapper>
+      <Button type="submit" disabled={isLoading}>
         Start loosing weight
-      </button>
-    </form>
+      </Button>
+    </FormField>
   );
 };
