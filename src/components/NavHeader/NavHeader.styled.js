@@ -6,6 +6,7 @@ export const NavHeaderContainer = styled.nav`
   text-align: end;
   display: flex;
   border-bottom: ${theme.border.header};
+  padding: ${theme.mp(2, 0, 2, 0)};
   @media screen and (max-width: 767px) {
     background: ${theme.colors.background.greyBackground};
   }
