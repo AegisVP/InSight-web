@@ -10,7 +10,3 @@ export const handleDeleteDiaryEntry = (state, action) => {
 export const handleGetDailyDiary = (state, action) => {
   state.inputDiary = action.payload;
 };
-
-export const handleResetDailyDiary = state => {
-  state.inputDiary = [];
-};

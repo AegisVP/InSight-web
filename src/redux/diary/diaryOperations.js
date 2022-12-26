@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const addDiaryEntry = createAsyncThunk('diary/addDiaryEntry', async ({ day, id, weight }, thunkAPI) => {
+export const addDiaryEntry = createAsyncThunk('diary/addDiaryEntry', async ({ date, product, weight }, thunkAPI) => {
   try {
-    const response = await axios.post(`/diary/${day}`, { id: id, weight: weight });
+    const response = await axios.post(`/diary/${date}`, { id: product, weight });
     return response.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
@@ -26,8 +26,4 @@ export const getDailyDiary = createAsyncThunk('diary/getDailyDiary', async (day,
   } catch (err) {
     return thunkAPI.rejectWithValue(err.message);
   }
-});
-
-export const resetDailyDiary = createAsyncThunk('diary/resetDailyDiary', async (_, thunkAPI) => {
-  return [];
 });

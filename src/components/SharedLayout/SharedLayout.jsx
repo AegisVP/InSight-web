@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { MainHeader } from 'components/MainHeader/MainHeader';
 import { Outlet } from 'react-router-dom';
-import { HeaderBarIsLogedIn } from './SharedLayout.styled';
+import { HeaderBarIsLogedIn } from '../../pages/Styles/SharedLayout.styled';
 import { selectUserIsLoggedIn } from 'redux/selectors';
 import MainPageSelector from 'components/MainPage/MainPageSelector';
 
