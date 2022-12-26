@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/InSight-web/static/css/main.be59e2fb.css",
-    "main.js": "/InSight-web/static/js/main.86796f21.js",
-    "static/js/574.d57839ea.chunk.js": "/InSight-web/static/js/574.d57839ea.chunk.js",
-    "static/js/116.5f5c7300.chunk.js": "/InSight-web/static/js/116.5f5c7300.chunk.js",
+    "main.js": "/InSight-web/static/js/main.7b31720d.js",
+    "static/js/574.4a500647.chunk.js": "/InSight-web/static/js/574.4a500647.chunk.js",
+    "static/js/116.3b0bed86.chunk.js": "/InSight-web/static/js/116.3b0bed86.chunk.js",
     "static/js/145.0c3fe1d3.chunk.js": "/InSight-web/static/js/145.0c3fe1d3.chunk.js",
     "static/js/628.2acce036.chunk.js": "/InSight-web/static/js/628.2acce036.chunk.js",
     "static/js/468.f96f2b43.chunk.js": "/InSight-web/static/js/468.f96f2b43.chunk.js",
@@ -35,9 +35,9 @@
     "index.html": "/InSight-web/index.html",
     "static/media/Calendar.svg": "/InSight-web/static/media/Calendar.141071429de327afe95afb87e4c70fa4.svg",
     "main.be59e2fb.css.map": "/InSight-web/static/css/main.be59e2fb.css.map",
-    "main.86796f21.js.map": "/InSight-web/static/js/main.86796f21.js.map",
-    "574.d57839ea.chunk.js.map": "/InSight-web/static/js/574.d57839ea.chunk.js.map",
-    "116.5f5c7300.chunk.js.map": "/InSight-web/static/js/116.5f5c7300.chunk.js.map",
+    "main.7b31720d.js.map": "/InSight-web/static/js/main.7b31720d.js.map",
+    "574.4a500647.chunk.js.map": "/InSight-web/static/js/574.4a500647.chunk.js.map",
+    "116.3b0bed86.chunk.js.map": "/InSight-web/static/js/116.3b0bed86.chunk.js.map",
     "145.0c3fe1d3.chunk.js.map": "/InSight-web/static/js/145.0c3fe1d3.chunk.js.map",
     "628.2acce036.chunk.js.map": "/InSight-web/static/js/628.2acce036.chunk.js.map",
     "468.f96f2b43.chunk.js.map": "/InSight-web/static/js/468.f96f2b43.chunk.js.map",
@@ -51,6 +51,6 @@
   },
   "entrypoints": [
     "static/css/main.be59e2fb.css",
-    "static/js/main.86796f21.js"
+    "static/js/main.7b31720d.js"
   ]
 }
