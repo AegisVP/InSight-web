@@ -54,9 +54,9 @@ const Calculator = () => {
           ) : (
             <CaloriesIntake diet={diet} />
           )}
-          {isLoggedIn && diet && <SideBar />}
         </Modal>
       )}
+      {isLoggedIn && <SideBar />}
     </Container>
   );
 };
