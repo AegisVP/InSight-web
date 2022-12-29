@@ -25,16 +25,16 @@ export const Modal = ({ onClose, children }) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => document.body.style.overflow = 'unset';
-  }, []);
-
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
       onClose();
     }
   };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => document.body.style.overflow = 'unset';
+  }, []);
 
   return createPortal(
     <Backdrop onClick={handleBackDropClick}>
