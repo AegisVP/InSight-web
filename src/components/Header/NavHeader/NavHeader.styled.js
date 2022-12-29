@@ -36,7 +36,7 @@ export const LogoContainer = styled.div`
   align-items: center;
 `;
 export const StyledNavLink = styled(NavLink)`
-  margin: ${p => p.theme.mp(0, 0, 0, 3)};
+  margin: ${p => p.theme.mp(0, 0, 1, 3)};
   color: ${p => p.theme.colors.text.mediumText};
   text-decoration: none;
   margin-left: auto;
@@ -45,8 +45,10 @@ export const StyledNavLink = styled(NavLink)`
   @media screen and (min-width: 768px) {
     margin-left: ${p => p.theme.spacing[3]}px;
     padding-left: ${p => p.theme.spacing[3]}px;
+  :nth-child(2) {
     border-left: ${p => p.theme.border.header};
   }
+ }
   :hover {
     color: ${p => p.theme.colors.text.accentText};
   }
