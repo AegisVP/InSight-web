@@ -18,7 +18,6 @@ export const Backdrop = styled.div`
 
 export const ModalViev = styled.div`
   position: absolute;
-  overflow: scroll;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
