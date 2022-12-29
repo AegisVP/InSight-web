@@ -1,10 +1,17 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useSelector } from 'react-redux';
 import { Backdrop, ModalViev, Close } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
+export const isOpenModal = state=> state.modal.isOpen
+
 export const Modal = ({ onClose, children }) => {
+  const modalOpen = useSelector(isOpenModal)
+  console.log('modalOpen', modalOpen)
+  
+
   useEffect(() => {
     const hadleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -17,6 +24,11 @@ export const Modal = ({ onClose, children }) => {
       window.removeEventListener('keydown', hadleKeyDown);
     };
   }, [onClose]);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => document.body.style.overflow = 'unset';
+  }, []);
 
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
