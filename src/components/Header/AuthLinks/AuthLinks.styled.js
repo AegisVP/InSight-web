@@ -15,7 +15,7 @@ export const HeaderContainer = styled.nav`
   }
   @media screen and (min-width: 1280px) {
     padding-right: 0;
-    padding-top: ${p => p.theme.mp(6)};
+    padding-top: ${p => p.theme.mp(5)};
     align-items: flex-end;
   }
 `;
@@ -33,8 +33,10 @@ export const AuthLink = styled(NavLink)`
     margin-left: ${p => p.theme.mp(3)};
     padding-left: ${p => p.theme.mp(3)};
     padding-right: 0;
+:first-child {
     border-left: ${p => p.theme.border.header};
   }
+}
   :hover {
     color: ${p => p.theme.colors.text.accentText};
   }
